@@ -28,18 +28,31 @@ document.querySelector("#slower").addEventListener("click", function() {
 var fast_count = slow_count;
 document.querySelector("#faster").addEventListener("click", function() {
 	console.log("Faster");
-	fast_count = 1.05*fast_count;
+	fast_count = 1.05*slow_count;
 	video.playbackRate = fast_count;
+	fast_count = 1.05*fast_count;
 	console.log(fast_count);
 })
 
-var time = 0 + 15
+var time = 0 + 15;
 document.querySelector("#skip").addEventListener("click", function() {
-	console.log("Time");
-	video.currentTime = time;
-	time = time + 15;
-	console.log(time);
-	// if 
+	if (time == 75){
+		time = 0;
+		console.log(time);
+	}else{
+		console.log("Time");
+		video.currentTime = time;
+		console.log(time);
+		time = time + 15;
+	}
+	// console.log("Time");
+	// video.currentTime = time;
+	// time = time + 15;
+	// console.log(video.currentTime);
+	// if (video.currentTime == 90){
+	// 	video.currentTime = 0
+	// 	console.log(video.currentTime)
+	// }
 })
 
 
@@ -55,15 +68,15 @@ document.querySelector("#mute").addEventListener("click", function() {
 })
 
 document.querySelector("#slider").addEventListener("click", function() {
-	console.log(video.volume)
+	console.log(video.volume);
 	video.volume = this.value / 100;
 	volume.innerHTML = (video.volume *100) + '%';
 })
 
 document.querySelector("#vintage").addEventListener("click", function() {
-	video.classList.add("oldSchool")
+	video.classList.add("oldSchool");
 })
 
 document.querySelector("#orig").addEventListener("click", function() {
-	video.classList.remove("oldSchool")
+	video.classList.remove("oldSchool");
 })
